@@ -10,5 +10,3 @@ the behavior of the DNS resolution platform based on the resolution data.
 what you need:
 1.a domian name you own;
 2.two machine running centOS or other linux sysytem;
-
-
