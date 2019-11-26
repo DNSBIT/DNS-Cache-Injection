@@ -16,49 +16,6 @@ import re
 3、验证阶段
 3.1、向目标解析器发送验证阶段的载荷
 3.2、分析验证阶段接收到的应答报文，若查询域名的IP地址为1.2.3.6，则说明注入成功。
-
-数据结构：
-1、植入阶段发出
-;;Query      
-one.test-u3-4.cased.de  A ?
-
-植入阶段收到
-;;Query      
-one.test-u3-4.cased.de  A   ?
-;;Answer     
-one.test-u3-4.cased.de  A   1.2.3.4
-;;Authority  
-one.test-u3-4.cased.de  NS  ns.test-u3-4.cased.de
-;;Additional 
-ns.test-u3-4.cased.de   A   141.12.174.20
-
-2、注入阶段发出.de       A   141.12.174.21
-
-;;Query      two.sub.test-u3-4.cased.de A ?
-
-植入阶段收到
-;;Query      
-two.sub.test-u3-4.cased.de  A   ?
-;;Answer     
-two.sub.test-u3-4.cased.de  A   1.2.3.5
-;;Authority  
-two.sub.test-u3-4.cased.de  NS  ns.test-u3-4.cased.de
-;;Additional 
-ns.test-u3-4.cased.de       A   141.12.174.21你们的键盘
-
-3、验证阶段发出
-;;Query      three.test-u3-4.cased.de A ?
-
-植入阶段收到
-;;Query      
-three.test-u3-4.cased.de  A   ?
-;;Answer     
-three.test-u3-4.cased.de  A   1.2.3.6
-;;Authority  
-three.test-u3-4.cased.de  NS  ns.test-u3-4.cased.de
-;;Additional 
-ns.test-u3-4.cased        A   141.12.174.21
-
 '''
 
 def makeSeedPacket (inputPacket,ip,dns):
